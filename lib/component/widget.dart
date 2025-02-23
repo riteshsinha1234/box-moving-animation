@@ -11,11 +11,13 @@ Text customTxt(
   String text,
   double size,
   Color clr,
-  
 ) {
   return Text(
     text,
     style: TextStyle(
-        color: clr, fontSize: size, fontWeight: FontWeight.w500, fontFamily: "Roboto"),
+        color: clr,
+        fontSize: size,
+        fontWeight: FontWeight.w500,
+        fontFamily: "Roboto"),
   );
 }
