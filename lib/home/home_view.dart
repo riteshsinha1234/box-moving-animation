@@ -1,31 +1,12 @@
 import 'package:box_moving_animation/component/colors.dart';
 import 'package:box_moving_animation/component/widget.dart';
+import 'package:box_moving_animation/home/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  // ignore: non_constant_identifier_names
-  double pos_l = 0;
-  // ignore: non_constant_identifier_names
-  double pos_r = 0;
-  void _movewidget(String pos) {
-    setState(() {
-      if (pos == "Right") {
-        pos_l = screenWidth(context) * .9 - 100;
-        pos_r = 0;
-      } else if (pos == "Left") {
-        pos_l = 0;
-        pos_r = screenWidth(context) * .9 - 100;
-      }
-    });
-  }
+class HomeView extends StatelessWidget {
+  final HomeController controller = Get.put(HomeController());
+  HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,16 +20,18 @@ class _MyHomePageState extends State<MyHomePage> {
             decoration: BoxDecoration(border: Border.all(color: black)),
             child: Stack(
               children: <Widget>[
-                AnimatedPositioned(
-                  left: pos_l,
-                  right: pos_r,
-                  top: 10,
-                  duration: const Duration(milliseconds: 500),
-                  child: Center(
-                    child: Container(
-                      color: Colors.red,
-                      width: 100.0,
-                      height: 100.0,
+                Obx(
+                  () => AnimatedPositioned(
+                    left: controller.positionLeft.value,
+                    right: controller.positionRight.value,
+                    top: 10,
+                    duration: const Duration(milliseconds: 500),
+                    child: Center(
+                      child: Container(
+                        color: Colors.red,
+                        width: 100.0,
+                        height: 100.0,
+                      ),
                     ),
                   ),
                 ),
@@ -64,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 left: 230,
                 child: ElevatedButton(
                   onPressed: () {
-                    _movewidget("Left");
+                    controller.movePosition("Left", context);
                   },
                   child: customTxt("Left", 12, black),
                 ),
@@ -75,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 left: 30,
                 child: ElevatedButton(
                   onPressed: () {
-                    _movewidget("Right");
+                    controller.movePosition("Right", context);
                   },
                   child: customTxt("Right", 12, black),
                 ),
