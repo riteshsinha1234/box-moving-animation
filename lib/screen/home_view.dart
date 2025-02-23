@@ -1,3 +1,5 @@
+import 'package:box_moving_animation/component/colors.dart';
+import 'package:box_moving_animation/component/widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -6,7 +8,9 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        gapH(20),
         Container(
           width: 60,
           height: 60,
@@ -15,20 +19,22 @@ class HomeView extends StatelessWidget {
             border: Border.all(),
           ),
         ),
-        const SizedBox(height: 16),
+        gapH(50),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
               onPressed: () {},
-              child: const Text('Right'),
+              child: customTxt("Right", 12, black),
             ),
-            const SizedBox(width: 8),
+            gapW(20),
             ElevatedButton(
               onPressed: () {},
-              child: const Text('Left'),
+              child: customTxt("Left", 12, black),
             ),
           ],
         ),
+        gapH(20),
       ],
     );
   }
