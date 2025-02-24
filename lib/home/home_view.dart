@@ -33,7 +33,10 @@ class HomeView extends StatelessWidget {
                     child: Center(
                       child: Container(
                         color: Colors.red,
+                        //define container width
                         width: 100.0,
+
+                        //define container height
                         height: 100.0,
                       ),
                     ),
@@ -54,6 +57,7 @@ class HomeView extends StatelessWidget {
                   onPressed: controller.isDisableLeft.value
                       ? null
                       : () {
+                          //Function Calling for Left Direction
                           controller.movePosition("Left", context);
                         },
                   child: const Row(
@@ -74,6 +78,7 @@ class HomeView extends StatelessWidget {
                   onPressed: controller.isDisableRight.value
                       ? null
                       : () {
+                          //Function Calling for Right Direction
                           controller.movePosition("Right", context);
                         },
                   child: const Row(
