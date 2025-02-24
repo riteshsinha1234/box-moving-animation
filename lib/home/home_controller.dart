@@ -1,4 +1,4 @@
-
+import 'package:box_moving_animation/components/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,12 +14,12 @@ class HomeController extends GetxController {
 
   // For Disable Right Button while moving Right Direction wiht observable
   var isDisableRight = false.obs;
-  
+
   //Function for Left and Right movement of Container
   void movePosition(String pos, BuildContext context) {
     if (pos == "Right") {
       //Total Size of a Container - Small Red Box Size
-      positionLeft.value = MediaQuery.of(context).size.width * .9 - 100;
+      positionLeft.value = screenWidth(context) * .9 - 100;
       positionRight.value = 0;
 
       //Disable right button while moving "Right Diraction"
@@ -31,7 +31,7 @@ class HomeController extends GetxController {
       positionLeft.value = 0;
 
       //Total Size of a Container - Small Red Box Size
-      positionRight.value = MediaQuery.of(context).size.width * .9 - 100;
+      positionRight.value = screenWidth(context) * .9 - 100;
 
       //disable left button while moving "Left Diraction"
       isDisableLeft.value = true;
