@@ -43,43 +43,35 @@ class HomeView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Obx(
-                () => Positioned(
-                  bottom: 60,
-                  left: 230,
-                  child: ElevatedButton(
-                    onPressed: controller.isDisableLeft.value
-                        ? null
-                        : () {
-                            controller.movePosition("Left", context);
-                          },
-                    child: Row(
-                      children: [
-                        const Icon(Icons.arrow_circle_left_outlined),
-                        gapW(5),
-                        customTxt("Left", 12, black),
-                      ],
-                    ),
+                () => ElevatedButton(
+                  onPressed: controller.isDisableLeft.value
+                      ? null
+                      : () {
+                          controller.movePosition("Left", context);
+                        },
+                  child: Row(
+                    children: [
+                      const Icon(Icons.arrow_circle_left_outlined),
+                      gapW(5),
+                      customTxt("Left", 12, black),
+                    ],
                   ),
                 ),
               ),
               gapW(20),
               Obx(
-                () => Positioned(
-                  bottom: 60,
-                  left: 30,
-                  child: ElevatedButton(
-                    onPressed: controller.isDisableRight.value
-                        ? null
-                        : () {
-                            controller.movePosition("Right", context);
-                          },
-                    child: Row(
-                      children: [
-                        customTxt("Right", 12, black),
-                        gapW(5),
-                        const Icon(Icons.arrow_circle_right_outlined),
-                      ],
-                    ),
+                () => ElevatedButton(
+                  onPressed: controller.isDisableRight.value
+                      ? null
+                      : () {
+                          controller.movePosition("Right", context);
+                        },
+                  child: Row(
+                    children: [
+                      customTxt("Right", 12, black),
+                      gapW(5),
+                      const Icon(Icons.arrow_circle_right_outlined),
+                    ],
                   ),
                 ),
               )
