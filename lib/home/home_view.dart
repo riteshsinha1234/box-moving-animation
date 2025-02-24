@@ -60,15 +60,7 @@ class HomeView extends StatelessWidget {
                         : () {
                             controller.movePosition("Left", context);
                           },
-                    child: Row(
-                      children: [
-                        const Icon(Icons.arrow_circle_left_outlined),
-                        // call this from Widget.dart
-                        gapW(5),
-                        // call this from Widget.dart
-                        customTxt("Left", 12, black),
-                      ],
-                    ),
+                    child: customTxt("Left", 12, black),
                   ),
                 ),
                 gapW(20),
@@ -82,15 +74,8 @@ class HomeView extends StatelessWidget {
                         : () {
                             controller.movePosition("Right", context);
                           },
-                    child: Row(
-                      children: [
-                        // call this from Widget.dart
-                        customTxt("Right", 12, black),
-                        // call this from Widget.dart
-                        gapW(5),
-                        const Icon(Icons.arrow_circle_right_outlined),
-                      ],
-                    ),
+                    // call this from Widget.dart
+                    child: customTxt("Right", 12, black),
                   ),
                 )
               ],
