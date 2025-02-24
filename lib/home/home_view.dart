@@ -62,9 +62,6 @@ class HomeView extends StatelessWidget {
                           },
                     child: Row(
                       children: [
-                        const Icon(Icons.arrow_circle_left_outlined),
-                        // call this from Widget.dart
-                        gapW(5),
                         // call this from Widget.dart
                         customTxt("Left", 12, black),
                       ],
@@ -86,9 +83,6 @@ class HomeView extends StatelessWidget {
                       children: [
                         // call this from Widget.dart
                         customTxt("Right", 12, black),
-                        // call this from Widget.dart
-                        gapW(5),
-                        const Icon(Icons.arrow_circle_right_outlined),
                       ],
                     ),
                   ),
