@@ -60,6 +60,7 @@ class HomeView extends StatelessWidget {
                         : () {
                             controller.movePosition("Left", context);
                           },
+
                     child: customTxt("Left", 12, black),
                   ),
                 ),
