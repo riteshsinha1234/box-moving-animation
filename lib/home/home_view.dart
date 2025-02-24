@@ -1,6 +1,8 @@
+import 'package:box_moving_animation/components/widget.dart';
 import 'package:box_moving_animation/home/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../components/colors.dart';
 
 class HomeView extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
@@ -9,90 +11,93 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(height: 40),
-          // This is the big Container which contain small red box.
-          Container(
-            height: 200,
-            //Size of outer container
-            width: MediaQuery.of(context).size.width * .9,
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Stack(
-              children: <Widget>[
-                Obx(
-                  () =>
-                      // This AnimatedPositiond is a widget in Flutter
-                      // used to create animated transitions for a
-                      // widget's position within a Stack
-                      AnimatedPositioned(
-                    left: controller.positionLeft.value,
-                    right: controller.positionRight.value,
-                    top: 10,
-                    duration: const Duration(milliseconds: 500),
-                    child: Center(
-                      child: Container(
-                        color: Colors.red,
-                        //define container width
-                        width: 100.0,
-
-                        //define container height
-                        height: 100.0,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            gapH(40),
+            // This is the big Container which contain small red box.
+            Container(
+              height: 200,
+              width:
+                  screenWidth(context) * .9, //Total Outer Size of a container
+              decoration: BoxDecoration(border: Border.all(color: black)),
+              child: Stack(
+                children: <Widget>[
+                  Obx(
+                    () =>
+                        // This AnimatedPositiond is a widget in Flutter
+                        // used to create animated transitions for a
+                        // widget's position within a Stack
+                        AnimatedPositioned(
+                      left: controller.positionLeft.value,
+                      right: controller.positionRight.value,
+                      top: 10,
+                      duration: const Duration(milliseconds: 500),
+                      child: Center(
+                        child: Container(
+                          color: Colors.red,
+                          width: 100.0,
+                          height: 100.0,
+                        ),
                       ),
                     ),
                   ),
+                ],
+              ),
+            ),
+            // call this from Widget.dart
+            gapH(20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // use condition Statement for desiable button while moving
+                // in a left diraction
+                // And Obx is for making button Observable
+                Obx(
+                  () => ElevatedButton(
+                    onPressed: controller.isDisableLeft.value
+                        ? null
+                        : () {
+                            controller.movePosition("Left", context);
+                          },
+                    child: Row(
+                      children: [
+                        const Icon(Icons.arrow_circle_left_outlined),
+                        // call this from Widget.dart
+                        gapW(5),
+                        // call this from Widget.dart
+                        customTxt("Left", 12, black),
+                      ],
+                    ),
+                  ),
                 ),
+                gapW(20),
+                // use condition Statement for desiable button while moving
+                // in a right diraction
+                // And Obx is for making button Observable
+                Obx(
+                  () => ElevatedButton(
+                    onPressed: controller.isDisableRight.value
+                        ? null
+                        : () {
+                            controller.movePosition("Right", context);
+                          },
+                    child: Row(
+                      children: [
+                        // call this from Widget.dart
+                        customTxt("Right", 12, black),
+                        // call this from Widget.dart
+                        gapW(5),
+                        const Icon(Icons.arrow_circle_right_outlined),
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
-          ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // use condition Statement for desiable button while moving
-              // in a left diraction
-              // And Obx is for making button Observable
-              Obx(
-                () => ElevatedButton(
-                  onPressed: controller.isDisableLeft.value
-                      ? null
-                      : () {
-                          //Function Calling for Left Direction
-                          controller.movePosition("Left", context);
-                        },
-                  child: const Row(
-                    children: [
-                      Icon(Icons.arrow_circle_left_outlined),
-                      SizedBox(width: 5),
-                      Text('Left'),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(width: 20),
-              // use condition Statement for desiable button while moving
-              // in a right diraction
-              // And Obx is for making button Observable
-              Obx(
-                () => ElevatedButton(
-                  onPressed: controller.isDisableRight.value
-                      ? null
-                      : () {
-                          //Function Calling for Right Direction
-                          controller.movePosition("Right", context);
-                        },
-                  child: const Row(
-                    children: [
-                      Text('Right'),
-                      SizedBox(height: 5),
-                      Icon(Icons.arrow_circle_right_outlined),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          )
-        ],
+            gapH(30),
+          ],
+        ),
       ),
     );
   }
