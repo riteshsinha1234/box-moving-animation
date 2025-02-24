@@ -69,7 +69,7 @@ class HomeView extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 20),
+              const SizedBox(width: 22),
               // use condition Statement for desiable button while moving
               // in a right diraction
               // And Obx is for making button Observable
