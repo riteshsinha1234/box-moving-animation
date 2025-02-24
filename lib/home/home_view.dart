@@ -14,14 +14,19 @@ class HomeView extends StatelessWidget {
       body: Column(
         children: [
           gapH(40),
+          // This is the big Container which contain small red box.
           Container(
             height: 200,
-            width: screenWidth(context) * .9,
+            width: screenWidth(context) * .9, //Total Outer Size of a container
             decoration: BoxDecoration(border: Border.all(color: black)),
             child: Stack(
               children: <Widget>[
                 Obx(
-                  () => AnimatedPositioned(
+                  () =>
+                      // This AnimatedPositiond is a widget in Flutter
+                      // used to create animated transitions for a
+                      // widget's position within a Stack
+                      AnimatedPositioned(
                     left: controller.positionLeft.value,
                     right: controller.positionRight.value,
                     top: 10,
@@ -38,10 +43,14 @@ class HomeView extends StatelessWidget {
               ],
             ),
           ),
+          // call this from Widget.dart
           gapH(20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // use condition Statement for desiable button while moving
+              // in a left diraction
+              // And Obx is for making button Observable
               Obx(
                 () => ElevatedButton(
                   onPressed: controller.isDisableLeft.value
@@ -52,13 +61,18 @@ class HomeView extends StatelessWidget {
                   child: Row(
                     children: [
                       const Icon(Icons.arrow_circle_left_outlined),
+                      // call this from Widget.dart
                       gapW(5),
+                      // call this from Widget.dart
                       customTxt("Left", 12, black),
                     ],
                   ),
                 ),
               ),
               gapW(20),
+              // use condition Statement for desiable button while moving
+              // in a right diraction
+              // And Obx is for making button Observable
               Obx(
                 () => ElevatedButton(
                   onPressed: controller.isDisableRight.value
@@ -68,7 +82,9 @@ class HomeView extends StatelessWidget {
                         },
                   child: Row(
                     children: [
+                      // call this from Widget.dart
                       customTxt("Right", 12, black),
+                      // call this from Widget.dart
                       gapW(5),
                       const Icon(Icons.arrow_circle_right_outlined),
                     ],
