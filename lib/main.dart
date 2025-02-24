@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      //Website going to be Deploy
       home: HomeView(),
     );
   }

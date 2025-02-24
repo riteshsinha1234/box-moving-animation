@@ -1,5 +1,3 @@
-import 'package:box_moving_animation/component/colors.dart';
-import 'package:box_moving_animation/component/widget.dart';
 import 'package:box_moving_animation/home/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,12 +11,13 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          gapH(40),
+          const SizedBox(height: 40),
           // This is the big Container which contain small red box.
           Container(
             height: 200,
-            width: screenWidth(context) * .9, //Total Outer Size of a container
-            decoration: BoxDecoration(border: Border.all(color: black)),
+            //Size of outer container
+            width: MediaQuery.of(context).size.width * .9,
+            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
             child: Stack(
               children: <Widget>[
                 Obx(
@@ -43,8 +42,7 @@ class HomeView extends StatelessWidget {
               ],
             ),
           ),
-          // call this from Widget.dart
-          gapH(20),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -58,18 +56,16 @@ class HomeView extends StatelessWidget {
                       : () {
                           controller.movePosition("Left", context);
                         },
-                  child: Row(
+                  child: const Row(
                     children: [
-                      const Icon(Icons.arrow_circle_left_outlined),
-                      // call this from Widget.dart
-                      gapW(5),
-                      // call this from Widget.dart
-                      customTxt("Left", 12, black),
+                      Icon(Icons.arrow_circle_left_outlined),
+                      SizedBox(width: 5),
+                      Text('Left'),
                     ],
                   ),
                 ),
               ),
-              gapW(20),
+              const SizedBox(width: 20),
               // use condition Statement for desiable button while moving
               // in a right diraction
               // And Obx is for making button Observable
@@ -80,13 +76,11 @@ class HomeView extends StatelessWidget {
                       : () {
                           controller.movePosition("Right", context);
                         },
-                  child: Row(
+                  child: const Row(
                     children: [
-                      // call this from Widget.dart
-                      customTxt("Right", 12, black),
-                      // call this from Widget.dart
-                      gapW(5),
-                      const Icon(Icons.arrow_circle_right_outlined),
+                      Text('Right'),
+                      SizedBox(height: 5),
+                      Icon(Icons.arrow_circle_right_outlined),
                     ],
                   ),
                 ),
