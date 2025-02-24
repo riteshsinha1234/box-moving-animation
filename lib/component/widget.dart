@@ -15,6 +15,7 @@ screenHeight(BuildContext context) => MediaQuery.of(context).size.height;
 screenWidth(BuildContext context) => MediaQuery.of(context).size.width;
 
 // Custom Text
+// This is a text Function
 Text customTxt(
   String text,
   double size,

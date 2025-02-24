@@ -3,18 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  // Initialized left position
+  // Initialized left position wiht observable
   var positionLeft = 0.0.obs;
 
-  // Initialized Right position
+  // Initialized Right position wiht observable
   var positionRight = 0.0.obs;
 
-  // For Disable Left Button while moving Left Direction
+  // For Disable Left Button while moving Left Direction wiht observable
   var isDisableLeft = false.obs;
 
-  // For Disable Right Button while moving Right Direction
+  // For Disable Right Button while moving Right Direction wiht observable
   var isDisableRight = false.obs;
-
+  
+  //Function for Left and Right movement of Container
   void movePosition(String pos, BuildContext context) {
     if (pos == "Right") {
       //Total Size of a Container - Small Red Box Size
