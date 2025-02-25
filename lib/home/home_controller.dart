@@ -25,7 +25,7 @@ class HomeController extends GetxController {
       //Disable right button while moving "Right Diraction"
       isDisableRight.value = true;
 
-      //Left button must true
+      //Left button must be false
       isDisableLeft.value = false;
     } else if (pos == "Left") {
       positionLeft.value = 0;
@@ -36,7 +36,7 @@ class HomeController extends GetxController {
       //disable left button while moving "Left Diraction"
       isDisableLeft.value = true;
 
-      //Right button must true
+      //Right button must be false
       isDisableRight.value = false;
     }
   }
