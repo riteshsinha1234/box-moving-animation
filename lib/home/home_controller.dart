@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  // Initialized left position wiht observable
+  // Initialized left position with observable
   var positionLeft = 0.0.obs;
 
-  // Initialized Right position wiht observable
+  // Initialized Right position with observable
   var positionRight = 0.0.obs;
 
-  // For Disable Left Button while moving Left Direction wiht observable
+  // For Disable Left Button while moving Left Direction with observable
   var isDisableLeft = false.obs;
 
-  // For Disable Right Button while moving Right Direction wiht observable
+  // For Disable Right Button while moving Right Direction with observable
   var isDisableRight = false.obs;
 
   //Function for Left and Right movement of Container
